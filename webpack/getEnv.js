@@ -18,10 +18,6 @@ module.exports = function () {
 
     const { parsed } = require('dotenv').config({ path: mapPath[NODE_ENV] });
 
-    console.log('11', {
-        ...parsed,
-        NODE_ENV,
-    })
     return {
         ...parsed,
         NODE_ENV,
