@@ -418,6 +418,7 @@ module.exports = {
 
             {
                 test: /.(ts|tsx)$/,
+                exclude: /(node_modules)/,
                 use: [
                     {
                         loader: swcLoader,
@@ -427,6 +428,7 @@ module.exports = {
             },
             {
                 test: /.(js|jsx|mjs|cjs)$/,
+                exclude: /(node_modules)/,
                 use: [
                     {
                         loader: swcLoader,
@@ -434,6 +436,20 @@ module.exports = {
                     },
                 ],
             },
+
+
+            // {
+            //     test: /\.m?js$/,
+            //     exclude: /(node_modules)/,
+            //     use: {
+            //       loader: "swc-loader",
+            //       options: {
+            //         parseMap: true
+            //       }
+            //     }
+            //   },
+
+
             // json
             {
                 test: /\.json$/,
