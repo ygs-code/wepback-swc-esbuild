@@ -10,12 +10,13 @@ const WebpackHotPlugin = require('webpack-hot-plugin');
 const HappyPack = require('happypack');
 const os = require('os');
 const happyThreadPool = HappyPack.ThreadPool({ size: os.cpus().length - 1 });
-const {
+const getEnv = require('./getEnv');
+let {
     NODE_ENV, // 环境参数
     WEB_ENV, // 环境参数
     target, // 环境参数
-    htmlWebpackPluginOptions = {},
-} = process.env; // 环境参数
+    htmlWebpackPluginOptions = '',
+} =  getEnv(); // 环境参数
 
 //    是否是生产环境
 const isEnvProduction = NODE_ENV === 'production';
@@ -142,20 +143,20 @@ module.exports = {
     module: {
         rules: [
             // // js和jsx编译
-            // {
-            //     test: /(\.m?js$)|(\.jsx?$)/,
-            //     // enforce: 'pre',
-            //     // 排除文件,因为这些包已经编译过，无需再次编译
-            //     exclude: /(node_modules|bower_components)/,
-            //     use: ['source-map-loader'].concat(cacheLoader('babel')),
-            //     // use: {
-            //     //  loader: "babel-loader",
-            //     //   options: {
-            //     //     presets: ["@babel/preset-env"],
-            //     //     plugins: ["@babel/plugin-transform-runtime"],
-            //     //   },
-            //     // },
-            // },
+            {
+                test: /(\.m?js$)|(\.jsx?$)/,
+                // enforce: 'pre',
+                // 排除文件,因为这些包已经编译过，无需再次编译
+                exclude: /(node_modules|bower_components)/,
+                use: ['source-map-loader'],
+                // use: {
+                //  loader: "babel-loader",
+                //   options: {
+                //     presets: ["@babel/preset-env"],
+                //     plugins: ["@babel/plugin-transform-runtime"],
+                //   },
+                // },
+            },
 
             // css
             {

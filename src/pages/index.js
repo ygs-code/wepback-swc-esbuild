@@ -17,4 +17,7 @@ class A {
 
 let $a = new A('姚观寿');
 
+ 
+
 console.log('$a ==',$a.getName() )
+debugger

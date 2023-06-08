@@ -2,6 +2,7 @@
 // const pkg = require("../package.json");
 const getCommon = (isDev = false, isClient = false) => {
   const opt = {
+    // "source-maps":true,
     jsc: {
       // externalHelpers: true,
       transform: {
